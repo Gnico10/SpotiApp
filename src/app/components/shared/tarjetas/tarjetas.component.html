@@ -1,11 +1,11 @@
-<div class="row mt-5" data-masonry='{"percentPosition": true }'>
+<div class="row mt-5 animated fadeIn" data-masonry='{"percentPosition": true }'>
     <div *ngFor="let item of items" class="col-sm-6 col-lg-4 mb-4">
         <div class="card">
-            <img [src]="item.images | noimage" class="card-img-top" alt="item.name">
+            <img (click)="verArtista( item )" [src]="item.images | noimage" class="card-img-top puntero" alt="item.name">
             <div class="card-body">
                 <h5 class="card-title">{{item.name}}</h5>
                 <p class="card-text">
-                    <span *ngFor="let artista of item.artists" class="badge rounded-pill bg-primary">
+                    <span (click)="verArtista( artista )" *ngFor="let artista of item.artists" class="badge rounded-pill bg-primary puntero">
                         {{artista.name}}
                     </span>
                 </p>
