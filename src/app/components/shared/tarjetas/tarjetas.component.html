@@ -1,0 +1,15 @@
+<div class="row mt-5" data-masonry='{"percentPosition": true }'>
+    <div *ngFor="let item of items" class="col-sm-6 col-lg-4 mb-4">
+        <div class="card">
+            <img [src]="item.images | noimage" class="card-img-top" alt="item.name">
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">
+                    <span *ngFor="let artista of item.artists" class="badge rounded-pill bg-primary">
+                        {{artista.name}}
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
