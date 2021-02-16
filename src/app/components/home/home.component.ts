@@ -13,14 +13,23 @@ export class HomeComponent implements OnInit {
   nuevasCanciones: any[] = [];
   loading: boolean;
 
+  error: boolean;
+  errorMessage: string;
+
   constructor( private spotify: SpotifyService ) {
 
     this.loading = true;
+    this.error = false;
 
     this.spotify.getNewReleases()
         .subscribe( (data: any) => {
           this.nuevasCanciones = data;
           this.loading = false;
+          this.loading = false;
+        }, ( errorServicio ) => {
+          this.loading = false;
+          this.error = true;
+          this.errorMessage = errorServicio.error.error.message;
         });
   }
 

@@ -4,6 +4,8 @@
     </div>
 </div>
 
+<app-error *ngIf="error" [errorMessage]="errorMessage" class="m-5"></app-error>
+
 <app-loading *ngIf="loading" class="m-5"></app-loading>
 
-<app-tarjetas *ngIf="!loading" [items]="artistas"></app-tarjetas>
+<app-tarjetas *ngIf="!loading && !error" [items]="artistas"></app-tarjetas>

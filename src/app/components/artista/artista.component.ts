@@ -15,12 +15,24 @@ export class ArtistaComponent{
   loading: boolean;
   topTracks: any[] = [];
 
+  error: boolean;
+  errorMessage: string;
+
   constructor( private router: ActivatedRoute,
                private spotify: SpotifyService,
                private location: Location) {
+
+    this.loading = true;
+    this.error = false;
+
+
     this.router.params.subscribe( params => {
       this.getArtista(params.id);
       this.getTopTracks(params.id);
+    }, ( errorServicio ) => {
+      this.loading = false;
+      this.error = true;
+      this.errorMessage = errorServicio.error.error.message;
     });
   }
 
@@ -30,6 +42,7 @@ export class ArtistaComponent{
 
     this.spotify.getArtista( id )
         .subscribe( artista => {
+          console.log(artista);
           this.artista = artista;
           this.loading = false;
         });
